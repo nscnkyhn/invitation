@@ -1,75 +1,69 @@
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Invitation</title>
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Meie+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&display=swap" rel="stylesheet">
+</head>
 <body>
-<div class="header">
-    <h1>You're Invited!</h1>
-    <p>Join us for a special celebration</p>
-</div>
-<div class="pages">
-    <div class="left-page">
-        <div class="main-content">
-            <div class="info-section">
-                <div class="event-details">
-                    <p><strong>Date:</strong> [Add Event Date]</p>
-                    <p><strong>Time:</strong> [Add Event Time]</p>
+
+<div class="container">
+    <div class="header">
+        <h1>DAVETLİSİNİZ!</h1>
+        <p>Bu özel günümüzde sizleri de aramızda görmekten mutluluk duyarız</p>
+    </div>
+
+    <div class="bride-groom-names">
+        <p class="bride-groom-name-font" id="groom-name">EnesCan</p>
+        <img src="media/photo1.png" alt="Event Invitation" class="main-image">
+        <p class="bride-groom-name-font" id="bride-name">Nilay</p>
+    </div>
+
+    <div class="family-names">
+        <p class="family-names-font">KAYHAN ve SOĞAT</p>
+        <p class="family-names-font">AİLELERİ</p>
+    </div>
+
+    <div class="details">
+        <div class="wedding">
+            <p class="location-text"><strong>NİKAH</strong>
+            05.07.2025 12:30
+            İBB Bülent Ecevit Kültür Merkezi Nikah Sarayı</p>
+            <a href="#" class="calendar-btn" id="add-to-calendar-wedding">Add to Calendar</a>
+
+            <div class="maps-container" style="margin-top: 30px;">
+                <div class="maps-placeholder" id="wedding-map-placeholder">
+                    Click here to view location on Google Maps
                 </div>
             </div>
         </div>
+        <div class="ceremony">
+            <p class="location-text"><strong>DÜĞÜN</strong>
+            06.09.2025 19:30
+            Aydın Nazilli</p>
+            <a href="#" class="calendar-btn" id="add-to-calendar-ceremony">Add to Calendar</a>
 
-        <div class="bottom-section">
-            <div class="calendar-section">
-                <h3>Save the Date &amp; Location</h3>
-                <p>Add this event to your calendar so you don't miss it!</p>
-                <p class="location-text"><strong>Location:</strong> [Add Event Location]</p>
-                <a href="#" class="calendar-btn" id="add-to-calendar">Add to Calendar</a>
-
-                <div class="maps-container" style="margin-top: 30px;">
-                    <div class="maps-placeholder" id="map-placeholder">
-                        Click here to view location on Google Maps
-                    </div>
+            <div class="maps-container" style="margin-top: 30px;">
+                <div class="maps-placeholder" id="ceremony-map-placeholder">
+                    Click here to view location on Google Maps
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="right-page">
-        <div class="main-content">
-            <div class="info-section">
-                <div class="event-details">
-                    <p><strong>Date:</strong> [Add Event Date]</p>
-                    <p><strong>Time:</strong> [Add Event Time]</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bottom-section">
-            <div class="calendar-section">
-                <h3>Save the Date &amp; Location</h3>
-                <p>Add this event to your calendar so you don't miss it!</p>
-                <p class="location-text"><strong>Location:</strong> [Add Event Location]</p>
-                <a href="#" class="calendar-btn" id="add-to-calendar">Add to Calendar</a>
-
-                <div class="maps-container" style="margin-top: 30px;">
-                    <div class="maps-placeholder" id="map-placeholder">
-                        Click here to view location on Google Maps
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="footer">
+        <p>We can't wait to celebrate with you!</p>
     </div>
 </div>
-<div class="footer">
-    <p>We can't wait to celebrate with you!</p>
-</div>
 
 
-<!--<input type="file" id="fileInput" multiple>-->
-<!--<button onclick="uploadFiles()">Upload</button>-->
-<!--<div id="status"></div>-->
+<input type="file" id="fileInput" multiple>
+<button onclick="uploadFiles()">Upload</button>
+<div id="status"></div>
 </body>
 <script src="script.js"></script>
 <script src="google_maps.js"></script>
