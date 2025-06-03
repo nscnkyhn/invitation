@@ -106,9 +106,14 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 253, 171, 0.34);
+    background-color: rgba(188, 213, 191, 0.55);
     padding: 20px;
     border-radius: 10px;
+}
+
+.wedding {
+    background-color: rgb(213, 210, 188);
+    box-shadow: 3px 3px black;
 }
 
 .location-text {
