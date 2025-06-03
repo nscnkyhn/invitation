@@ -1,0 +1,54 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+
+<body>
+<div class="container">
+    <div class="header">
+        <h1>You're Invited!</h1>
+        <p>Join us for a special celebration</p>
+    </div>
+
+    <div class="main-content">
+        <div class="image-section">
+            <img src="https://public.youware.com/users-website-assets/prod/41488f94-2b89-419f-8b12-3f472a0ca5f5/g617204f445b6fcfec9088b9ba65dfd3ce85b8f5abd5c2160101dab0ea29cabae18d8d63f0d71628f7ff5902e562264f91215486eb98e27f526d59552ffb41a40_640.png" alt="Event Invitation" class="main-image">
+        </div>
+
+        <div class="info-section">
+            <div class="event-details">
+                <p><strong>Date:</strong> [Add Event Date]</p>
+                <p><strong>Time:</strong> [Add Event Time]</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        <div class="calendar-section">
+            <h3>Save the Date &amp; Location</h3>
+            <p>Add this event to your calendar so you don't miss it!</p>
+            <p class="location-text"><strong>Location:</strong> [Add Event Location]</p>
+            <a href="#" class="calendar-btn" id="add-to-calendar">Add to Calendar</a>
+
+            <div class="maps-container" style="margin-top: 30px;">
+                <div class="maps-placeholder" id="map-placeholder">
+                    Click here to view location on Google Maps
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>We can't wait to celebrate with you!</p>
+    </div>
+</div>
+
+
+<input type="file" id="fileInput" multiple>
+<button onclick="uploadFiles()">Upload</button>
+<div id="status"></div>
+</body>
+<script src="script.js"></script>
+<script src="google_maps.js"></script>
+</html>

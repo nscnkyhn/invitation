@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+</head>
+<body>
+<div class="passport">
+    <!-- Left Page (Bride's Side) -->
+    <div class="page left-page">
+        <div class="passport-title">WEDDING INVITATION</div>
+
+        <div class="parents">
+            <h2>Bride's Parents</h2>
+            <p>Mr. John Smith</p>
+            <p>Mrs. Mary Smith</p>
+        </div>
+
+        <div class="content">
+            <div class="map-container">
+                <!-- Wedding Location Map -->
+                <iframe
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="https://maps.google.com/maps?q=40.7128,-74.0060&z=15&output=embed">
+                </iframe>
+            </div>
+
+            <div class="calendar-container">
+                <div class="date-time">
+                    <p>Saturday, June 15, 2024</p>
+                    <p>4:00 PM</p>
+                </div>
+                <button class="calendar-btn" onclick="addToCalendar('Wedding Ceremony', '2024-06-15T16:00:00', '40.7128,-74.0060')">
+                    Add to Calendar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Page (Groom's Side) -->
+    <div class="page">
+        <div class="passport-title">&nbsp;</div> <!-- Empty space for symmetry -->
+
+        <div class="parents">
+            <h2>Groom's Parents</h2>
+            <p>Mr. Robert Johnson</p>
+            <p>Mrs. Elizabeth Johnson</p>
+        </div>
+
+        <div class="content">
+            <div class="map-container">
+                <!-- Ceremony Location Map -->
+                <iframe
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="https://maps.google.com/maps?q=34.0522,-118.2437&z=15&output=embed">
+                </iframe>
+            </div>
+
+            <div class="calendar-container">
+                <div class="date-time">
+                    <p>Saturday, June 15, 2024</p>
+                    <p>6:00 PM</p>
+                </div>
+                <button class="calendar-btn" onclick="addToCalendar('Wedding Reception', '2024-06-15T18:00:00', '34.0522,-118.2437')">
+                    Add to Calendar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

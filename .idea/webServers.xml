@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f9231b6e-fa95-40bf-93fe-9cfc3f8ef143" name="enesnilaykayhan.com" url="http://enesnilaykayhan.com">
+        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="62.171.129.252" port="22" sshConfigId="9e9967c3-a8ca-40f6-b882-a0c28fc41714" sshConfig="admin@62.171.129.252:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" isUseSudo="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
