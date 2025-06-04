@@ -67,11 +67,13 @@
             align-items: flex-start;
         }
 
+        .flex-start {
+            justify-content: flex-start;
+        }
+
         .info-section {
             flex: 1;
         }
-
-
 
         .info-label {
             font-size: 10px;
@@ -177,26 +179,26 @@
         <div class="flight-info">
             <img class="info-label" src="media/calendar.svg" alt="">
             <div class="info-section">
-                <a target="_blank" href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20250906T193000/20250906T233000&ctz=Europe/Istanbul&text=Enes+Can+ve+Nilay+Kayhan+D%C3%BC%C4%B1&location=%C4%B0BB+B%C3%BClent+Ecevit+K%C3%BClt%C3%BCr+Merkezi&details=Nikah+salonunu+%27Nikah+Saray%C4%B1%27+tabelalar%C4%B1n%C4%B1+takip+ederek+bulabilirsiniz.">
+                <a target="_blank" href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20250906T193000/20250906T233000&ctz=Europe/Istanbul&text=Enes+Can+ve+Nilay+Kayhan+D%C3%BC%C4%9F%C3%BCn%C3%BC&location=G%C3%BCng%C3%BCrler+D%C3%BC%C4%9F%C3%BCn+Salonu,+Ye%C5%9Fil,+09800+Nazilli/Ayd%C4%B1n">
                     <div class="info-label">Tarih</div>
                     <div class="info-value">6 Eylül 2025</div>
                 </a>
             </div>
             <div class="info-section">
-                <a target="_blank" href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20250705T123000/20250705T133000&ctz=Europe/Istanbul&text=Enes+Can+ve+Nilay+Kayhan+Nikah%C4%B1&location=%C4%B0BB+B%C3%BClent+Ecevit+K%C3%BClt%C3%BCr+Merkezi&details=Nikah+salonunu+%27Nikah+Saray%C4%B1%27+tabelalar%C4%B1n%C4%B1+takip+ederek+bulabilirsiniz.">
+                <a target="_blank" href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20250906T193000/20250906T233000&ctz=Europe/Istanbul&text=Enes+Can+ve+Nilay+Kayhan+D%C3%BC%C4%9F%C3%BCn%C3%BC&location=G%C3%BCng%C3%BCrler+D%C3%BC%C4%9F%C3%BCn+Salonu,+Ye%C5%9Fil,+09800+Nazilli/Ayd%C4%B1n">
                     <div class="info-label">Saat</div>
                     <div class="info-value">19:30</div>
                 </a>
             </div>
         </div>
 
-        <div class="flight-info">
+        <div class="flight-info flex-start">
             <img class="info-label" src="media/location.svg" alt="">
-            <a target="_blank" href="https://maps.google.com/maps?q=isim">
+            <a target="_blank" href="https://maps.app.goo.gl/VtbRogTqwTtSkFJ68?g_st=iw">
             <div class="info-section">
                 <div class="info-label">Mekan</div>
-                <div class="info-value">isim</div>
-                <div class="info-label">adres</div>
+                <div class="info-value">Güngörler Düğün Salonu</div>
+                <div class="info-label">Güngürler Düğün Salonu, Yeşil, 09800 Nazilli/Aydın</div>
             </div>
             </a>
         </div>
@@ -205,29 +207,8 @@
     </div>
 
     <div class="ticket-footer">
-        <div>WHAT TO WRİTE.</div>
+        <div>Etkinlik saatinde mekanda yerlerinizi almış olmanızı önemle rica ederiz..</div>
     </div>
 </div>
-
-<add-to-calendar-button
-        name="Enes Can ve Nilay Kayhan Düğünü"
-        startDate="2025-09-06"
-        startTime="19:30"
-        endDate="2025-09-06"
-        endTime="23:30"
-        timeZone="Europe/Istanbul"
-        location="İBB Bülent Ecevit Kültür Merkezi"
-        options="'Apple','Google'"
-        listStyle="dropdown-static"
-        trigger="click"
-        hideTextLabelButton
-        hideTextLabelList
-        buttonsList
-        hideBackground
-        hideCheckmark
-        size="0"
-        lightMode="bodyScheme"
-        language="tr"
-></add-to-calendar-button>
 </body>
 </html>
