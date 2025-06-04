@@ -1,70 +1,306 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Invitation</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Meie+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&display=swap" rel="stylesheet">
+    <title>Wedding Passport Animation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Passport Container - 8.5x12.5 ratio */
+        .passport-container {
+            position: relative;
+            width: 340px;  /* 8.5" ratio */
+            height: 500px; /* 12.5" ratio */
+            perspective: 2000px;
+        }
+
+        /* Passport */
+        .passport {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: scale(0.1) translateZ(0);
+            transition: transform 1.5s ease-out;
+            cursor: pointer;
+        }
+
+        .passport.zoomed {
+            transform: scale(1) translateZ(0);
+        }
+
+        /* Passport Cover - Now stays visible when open */
+        .passport-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a3a1a, #2a5a2a);
+            border-radius: 5px 0 0 5px;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            backface-visibility: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: gold;
+            font-size: 28px;
+            font-weight: bold;
+            transform-origin: left center;
+            transition: transform 1.5s ease-in-out;
+            z-index: 10;
+            border-right: 2px solid #0a2a0a;
+        }
+
+        .passport-cover::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.1), transparent);
+            pointer-events: none;
+        }
+
+        .passport-cover.open {
+            transform: rotateY(-135deg) translateX(10px);
+        }
+
+        /* Passport Inside */
+        .passport-inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #f8f8f8;
+            border-radius: 0 5px 5px 0;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1),
+            5px 0 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Tickets Container - Allows overflow when closed */
+        .tickets-container {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            overflow: visible;
+            margin-top: 20px;
+        }
+
+        /* Tickets - Initially overflowing */
+        .ticket {
+            position: absolute;
+            width: 100%;
+            height: 40%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 1s ease-in-out;
+            border: 1px solid #ddd;
+            transform: translateY(-120%);
+            opacity: 0;
+        }
+
+        .ticket:nth-child(1) {
+            top: 0;
+            z-index: 2;
+            background: linear-gradient(135deg, #e6f7ff, #b3e0ff);
+            transition-delay: 0.3s;
+        }
+
+        .ticket:nth-child(2) {
+            top: 50%;
+            z-index: 1;
+            background: linear-gradient(135deg, #ffe6e6, #ffb3b3);
+            transition-delay: 0.5s;
+        }
+
+        .ticket.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Ticket Styling */
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #999;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+
+        .ticket-airline {
+            font-weight: bold;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .ticket-number {
+            font-style: italic;
+            color: #555;
+        }
+
+        .ticket-from-to {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .ticket-location {
+            text-align: center;
+            flex: 1;
+        }
+
+        .ticket-location .city {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .ticket-location .code {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .ticket-date {
+            text-align: center;
+            font-size: 16px;
+            color: #444;
+            margin: 10px 0;
+            padding: 5px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 4px;
+        }
+
+        .ticket-passenger {
+            font-size: 15px;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Back side of passport cover */
+        .passport-cover-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a2a0a, #1a3a1a);
+            border-radius: 5px;
+            backface-visibility: hidden;
+            transform: rotateY(90deg);
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: silver;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">
-        <h1>DAVETLİSİNİZ!</h1>
-        <p>Bu özel günümüzde sizleri de aramızda görmekten mutluluk duyarız</p>
-    </div>
-
-    <div class="bride-groom-names">
-        <p class="bride-groom-name-font" id="groom-name">EnesCan</p>
-        <img src="media/photo1.png" alt="Event Invitation" class="main-image">
-        <p class="bride-groom-name-font" id="bride-name">Nilay</p>
-    </div>
-
-    <div class="family-names">
-        <p class="family-names-font">KAYHAN ve SOĞAT</p>
-        <p class="family-names-font">AİLELERİ</p>
-    </div>
-
-    <div class="details">
-        <div class="wedding">
-            <p class="location-text"><strong>NİKAH</strong>
-            05.07.2025 12:30
-            İBB Bülent Ecevit Kültür Merkezi Nikah Sarayı</p>
-            <a href="#" class="calendar-btn" id="add-to-calendar-wedding">Takvime Ekle</a>
-
-            <div class="maps-container" style="margin-top: 30px;">
-                <div class="maps-placeholder" id="wedding-map-placeholder">
-                    Click here to view location on Google Maps
+<div class="passport-container">
+    <div class="passport">
+        <div class="passport-cover">
+            OUR WEDDING
+            <div class="passport-cover-back">
+                OFFICIAL INVITATION
+            </div>
+        </div>
+        <div class="passport-inside">
+            <div class="tickets-container">
+                <div class="ticket">
+                    <div class="ticket-header">
+                        <div class="ticket-airline">WEDDING AIRLINES</div>
+                        <div class="ticket-number">FLIGHT #LOVE2024</div>
+                    </div>
+                    <div class="ticket-from-to">
+                        <div class="ticket-location">
+                            <div class="city">CEREMONY</div>
+                            <div class="code">CHURCH</div>
+                        </div>
+                        <div style="font-size: 24px;">✈</div>
+                        <div class="ticket-location">
+                            <div class="city">RECEPTION</div>
+                            <div class="code">HOTEL</div>
+                        </div>
+                    </div>
+                    <div class="ticket-date">JUNE 15, 2024 • 3:00 PM</div>
+                    <div class="ticket-passenger">PASSENGER: YOU & GUEST</div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-header">
+                        <div class="ticket-airline">HONEYMOON AIR</div>
+                        <div class="ticket-number">FLIGHT #ROMANCE24</div>
+                    </div>
+                    <div class="ticket-from-to">
+                        <div class="ticket-location">
+                            <div class="city">WEDDING</div>
+                            <div class="code">DAY 1</div>
+                        </div>
+                        <div style="font-size: 24px;">✈</div>
+                        <div class="ticket-location">
+                            <div class="city">FOREVER</div>
+                            <div class="code">DAY ∞</div>
+                        </div>
+                    </div>
+                    <div class="ticket-date">JUNE 15, 2024 → FUTURE</div>
+                    <div class="ticket-passenger">PASSENGER: NEWLYWEDS</div>
                 </div>
             </div>
         </div>
-        <div class="ceremony">
-            <p class="location-text"><strong>DÜĞÜN</strong>
-            06.09.2025 19:30
-            Aydın Nazilli</p>
-            <a href="#" class="calendar-btn" id="add-to-calendar-ceremony">Takvime Ekle</a>
-
-            <div class="maps-container" style="margin-top: 30px;">
-                <div class="maps-placeholder" id="ceremony-map-placeholder">
-                    Click here to view location on Google Maps
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>Sizide aramızda görmek için sabırsızlanıyoruz!</p>
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const passport = document.querySelector('.passport');
+        const passportCover = document.querySelector('.passport-cover');
+        const tickets = document.querySelectorAll('.ticket');
 
-<!--<input type="file" id="fileInput" multiple>
-<button onclick="uploadFiles()">Upload</button>
-<div id="status"></div>-->
+        // 1. Initial zoom animation
+        setTimeout(() => {
+            passport.classList.add('zoomed');
+        }, 500);
+
+        // 2. Passport cover click handler
+        passportCover.addEventListener('click', function() {
+            // Open the passport
+            passportCover.classList.add('open');
+
+            // After cover opens, animate tickets
+            setTimeout(() => {
+                tickets.forEach(ticket => {
+                    ticket.classList.add('visible');
+                });
+            }, 800);
+        });
+
+        // Also allow clicking anywhere on passport after zoom
+        passport.addEventListener('click', function(e) {
+            if (passport.classList.contains('zoomed') && !passportCover.classList.contains('open')) {
+                passportCover.click();
+            }
+        });
+    });
+</script>
 </body>
-<script src="script.js"></script>
-<script src="google_maps.js"></script>
 </html>
