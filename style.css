@@ -75,7 +75,7 @@ body {
 
 .info-group {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-bottom: 20px;
     align-items: flex-start;
 }
@@ -145,6 +145,24 @@ body {
     font-size: 10px;
     color: #888;
     text-align: center;
+}
+
+.custom-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    max-width: fit-content;
+    text-align: center;
+}
+
+.maps-icon {
+    padding-top: 5px;
+    padding-right: 20px;
+}
+
+.calendar-icon {
+    padding-right: 20px;
 }
 
 a {
