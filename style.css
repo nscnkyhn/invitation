@@ -151,13 +151,11 @@ body {
 .bride-name {
     z-index: 2;
     margin-right: 200px;
-    text-shadow: #b7ff009c 1px 2px 5px;
 }
 
 .groom-name {
     z-index: 2;
     margin-left: 150px;
-    text-shadow: #b7ff009c 1px 2px 5px;
 }
 
 .heart {
