@@ -74,16 +74,22 @@ body {
 }
 
 .info-group {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-    align-items: flex-start;
-    align-content: center;
-    flex-direction: row-reverse;
+    display: grid;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
-.flex-start {
-    justify-content: flex-start;
+.button-label {
+    text-align: right;
+}
+
+.info-date-group {
+    grid-template-columns: 4fr 2fr;
+
+}
+
+.info-location-group {
+    grid-template-columns: 4fr 2fr;
 }
 
 .info-section {
@@ -91,15 +97,22 @@ body {
 }
 
 .info-label {
-    font-size: 10px;
-    color: #888;
+    font-size: 16px;
+    color: #656565;
     text-transform: uppercase;
     margin-bottom: 5px;
 }
 
 .info-value {
-    font-size: 14px;
+    font-size: 24px;
     font-weight: bold;
+}
+
+.info-sub-value {
+    font-size: 14px;
+    color: #656565;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .couple-names {
@@ -153,22 +166,12 @@ body {
     text-align: center;
 }
 
-.custom-button-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    max-width: fit-content;
+.maps-icon {
     text-align: center;
 }
 
-.maps-icon {
-    padding-top: 5px;
-    padding-right: 20px;
-}
-
 .calendar-icon {
-    padding-right: 20px;
+    text-align: center;
 }
 
 a {
