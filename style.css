@@ -1,4 +1,4 @@
-* {
+:root {
     --ticket-header-gradient-start-color: #FBC901;
     --ticket-header-gradient-end-color: #B8860B;
     --ticket-header-color: #ffffff;
@@ -10,18 +10,6 @@
     --families-text-color: #656565;
     --ticket-footer-color: #888;
     --ticket-footer-background-color: #f9f9f9;
-}
-@keyframes slideInDown {
-    0% {
-        transform: translateY(-100%);
-        visibility: hidden;
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0%);
-        visibility: visible;
-        opacity: 1;
-    }
 }
 
 body {
@@ -62,7 +50,7 @@ body {
 }
 
 .ticket-header {
-    background: url("media/paper_texture.JPG"), linear-gradient(135deg, var(--ticket-header-gradient-start-color), var(--ticket-header-gradient-end-color));
+    background: url("media/paper_texture.jpg"), linear-gradient(135deg, var(--ticket-header-gradient-start-color), var(--ticket-header-gradient-end-color));
     background-blend-mode: color-burn;
     background-size: cover;
     color: var(--ticket-header-color);
@@ -83,7 +71,7 @@ body {
 
 .ticket-body {
     padding: 20px;
-    background-image: url("media/paper_texture.JPG"), url("media/photo1.png");
+    background-image: url("media/paper_texture.jpg"), url("media/groom_and_bride_background.png");
     background-color: var(--ticket-body-background-color);
     background-repeat: no-repeat;
     background-size: cover;
@@ -249,5 +237,18 @@ a {
         .ticket {
             zoom: 0.5
         }
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-100%);
+        visibility: hidden;
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        visibility: visible;
+        opacity: 1;
     }
 }
