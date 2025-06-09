@@ -1,6 +1,7 @@
 :root {
     --ticket-header-gradient-start-color: #FBC901;
     --ticket-header-gradient-end-color: #B8860B;
+    --ticket-header-background: url("media/paper_texture.jpg"), linear-gradient(135deg, var(--ticket-header-gradient-start-color), var(--ticket-header-gradient-end-color));
     --ticket-header-color: #ffffff;
     --main-background-color: rgba(255, 252, 243, 0.5);
     --ticket-body-background-color: rgba(255, 255, 255, 0.7);
@@ -8,8 +9,8 @@
     --common-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     --couple-names-color: #FFB302;
     --families-text-color: #656565;
-    --ticket-footer-color: #888;
-    --ticket-footer-background-color: #f9f9f9;
+    --ticket-footer-color: var(--ticket-header-color);
+    --ticket-footer-background: var(--ticket-header-background);
 }
 
 body {
@@ -50,7 +51,7 @@ body {
 }
 
 .ticket-header {
-    background: url("media/paper_texture.jpg"), linear-gradient(135deg, var(--ticket-header-gradient-start-color), var(--ticket-header-gradient-end-color));
+    background: var(--ticket-header-background);
     background-blend-mode: color-burn;
     background-size: cover;
     color: var(--ticket-header-color);
@@ -71,7 +72,7 @@ body {
 
 .ticket-body {
     padding: 20px;
-    background-image: url("media/paper_texture.jpg"), url("media/groom_and_bride_background.png");
+    background-image: url("media/paper_texture.jpg"), url("media/background.png");
     background-color: var(--ticket-body-background-color);
     background-repeat: no-repeat;
     background-size: cover;
@@ -163,7 +164,9 @@ body {
 }
 
 .ticket-footer {
-    background: var(--ticket-footer-background-color);
+    background: var(--ticket-footer-background);
+    background-blend-mode: color-burn;
+    background-size: cover;
     padding: 10px 20px;
     font-size: 10px;
     color: var(--ticket-footer-color);
