@@ -71,7 +71,7 @@ body {
 }
 
 .ticket-body {
-    padding: 20px;
+    padding: 10px 20px 0 20px;
     background-image: url("media/paper_texture.jpg"), url("media/background.png");
     background-color: var(--ticket-body-background-color);
     background-repeat: no-repeat;
@@ -124,7 +124,7 @@ body {
 
 .couple-names {
     text-align: center;
-    margin: 25px 0;
+    margin: 0 0 25px 0;
     font-weight: 300;
     color: var(--couple-names-color);
     font-family: "Dancing Script", cursive;
@@ -149,7 +149,7 @@ body {
 
 .heart {
     margin-top: -5vh;
-    margin-bottom: -10vh;
+    margin-bottom: -14vh;
     rotate: 6deg;
     z-index: 1;
     opacity: 0.2;
