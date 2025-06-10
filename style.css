@@ -19,6 +19,7 @@ body {
     background-image: url("media/ivy.png");
     background-position: center;
     background-size: auto;
+    background-repeat: space;
     background-blend-mode: soft-light;
     display: flex;
     gap: 10px;
@@ -26,7 +27,6 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 20px;
     scroll-behavior: smooth;
 }
 
@@ -234,6 +234,7 @@ a {
 @media (max-width: 1049px) {
     body {
         flex-direction: column;
+        padding: 20px 0 20px 0;
     }
     @media (max-width: 539px) {
         .ticket {
