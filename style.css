@@ -1,5 +1,5 @@
 :root {
-    --common-color: #000000;
+    --common-color: #333333;
 
     --ticket-header-gradient-start-color: #a3b899;
     --ticket-header-gradient-end-color: #6b7864;
@@ -9,7 +9,7 @@
     --ticket-footer-color: var(--ticket-header-color);
 
     --main-background-color: rgba(249, 243, 255, 0.5);
-    --ticket-body-background-color: rgba(255, 255, 255, 0.8);
+    --ticket-body-background-color: rgba(255, 255, 255, 0.6);
 
     --info-label-color: var(--common-color);
     --info-value-color: var(--common-color);
