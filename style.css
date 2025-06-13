@@ -147,15 +147,31 @@ body {
 .bride-name {
     z-index: 2;
     position: relative;
-    top: 40%;
+    top: 20%;
     left: 5%;
+}
+
+.bride-surname {
+    z-index: 1;
+    position: relative;
+    top: 40%;
+    right: 25%;
+    font-size: 32px;
 }
 
 .groom-name {
     z-index: 2;
     position: relative;
-    top: 10%;
-    right: 5%
+    top: 60%;
+
+}
+
+.groom-surname {
+    z-index: 1;
+    position: relative;
+    top: 50%;
+    left: 25%;
+    font-size: 32px;
 }
 
 .heart {
@@ -173,8 +189,10 @@ body {
     text-align: center;
     font-size: 14px;
     color: var(--families-text-color);
-    margin-bottom: 20px;
     font-style: italic;
+    position: relative;
+    top: 30%;
+
 }
 
 .ticket-footer {
