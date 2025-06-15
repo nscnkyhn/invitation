@@ -11,6 +11,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Meie+Script&display=swap">
 </head>
 <body>
+
+<div class="popup-overlay" id="weddingPopup">
+    <div class="popup-content" id="weddingPopupContent">
+        <button class="popup-close" id="weddingPopupCloseButton">&times;</button>
+        <h2 class="popup-title">Nikaha geliyor musunuz?</h2>
+
+        <form id="weddingPopupForm">
+            <label for="weddingPopupNameInput">İsim Soyisim:</label>
+            <input type="text" id="weddingPopupNameInput" required placeholder="Adınızı girin">
+
+            <label for="weddingPopupCountInput">Kaç kişi geliyorsunuz?</label>
+            <input type="number" id="weddingPopupCountInput" min="1" required placeholder="Örn: 2">
+
+            <button type="submit" class="submit-btn">Kaydet</button>
+        </form>
+    </div>
+</div>
+
 <div class="ticket" id="wedding-ticket">
     <div class="ticket-header">
         <div class="ticket-title">NİKAH DAVETİ</div>
@@ -68,10 +86,36 @@
                 </div>
             </div>
         </div>
+
+        <div class="info-group info-guest">
+            <div class="info-section">
+                <div class="info-label">Katılım Durumunuz</div>
+                <div class="info-value">
+                    <a href="#" id="weddingPopupOpenButton">Ekle/Güncelle</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="ticket-footer">
         <div>Etkinlik saatinde salonda yerlerinizi almış olmanızı önemle rica ederiz.</div>
+    </div>
+</div>
+
+<div class="popup-overlay" id="ceremonyPopup">
+    <div class="popup-content" id="ceremonyPopupContent">
+        <button class="popup-close" id="ceremonyPopupCloseButton">&times;</button>
+        <h2 class="popup-title">Düğüne geliyor musunuz?</h2>
+
+        <form id="ceremonyPopupForm">
+            <label for="ceremonyPopupNameInput">İsim Soyisim:</label>
+            <input type="text" id="ceremonyPopupNameInput" required placeholder="Adınızı girin">
+
+            <label for="ceremonyPopupCountInput">Kaç kişi geliyorsunuz?</label>
+            <input type="number" id="ceremonyPopupCountInput" min="1" required placeholder="Örn: 2">
+
+            <button type="submit" class="submit-btn">Kaydet</button>
+        </form>
     </div>
 </div>
 
@@ -126,6 +170,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="info-group info-guest">
+            <div class="info-section">
+                <div class="info-label">Katılım Durumunuz</div>
+                <div class="info-value">
+                    <a href="#" id="ceremonyPopupOpenButton">Ekle/Güncelle</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="ticket-footer">
@@ -133,4 +186,6 @@
     </div>
 </div>
 </body>
+<script src="script.js"></script>
+
 </html>
