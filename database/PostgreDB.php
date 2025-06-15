@@ -28,6 +28,12 @@ class PostgresDB {
         return $stmt->fetchAll();
     }
 
+    public function selectOne($query, $params = []) {
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetch();
+    }
+
     // Example: Run INSERT/UPDATE/DELETE query with optional parameters
     public function execute($query, $params = []) {
         $stmt = $this->pdo->prepare($query);

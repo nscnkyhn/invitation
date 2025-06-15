@@ -239,7 +239,7 @@ a {
 
 .popup-content {
     background: white;
-    width: 80vw;
+    width: 50vw;
     padding: 20px;
     border-radius: 8px;
     position: relative;
@@ -273,22 +273,38 @@ a {
     box-sizing: border-box;
 }
 
+.popup-content .delete-button {
+    background-color: red;
+}
+
+.popup-content .delete-button:hover {
+    background-color: darkred;
+}
+
+.popup-content .save-button {
+    background-color: #007bff;
+}
+
+.popup-content .save-button:hover {
+    background-color: #0056b3;
+}
+
 .popup-content button.submit-btn {
     margin-top: 15px;
     padding: 10px 15px;
-    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.popup-content button.submit-btn:hover {
-    background-color: #0056b3;
-}
-
 .info-guest {
     justify-content: center;
+    align-content: center;
+}
+
+.text-center {
+    text-align: center;
 }
 
 @media (min-width: 1050px) {

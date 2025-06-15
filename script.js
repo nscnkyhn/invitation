@@ -1,89 +1,139 @@
+const tickets = document.getElementsByClassName('ticket');
 const weddingPopupOpenButton = document.getElementById('weddingPopupOpenButton');
 const weddingPopupCloseButton = document.getElementById('weddingPopupCloseButton');
 const weddingPopup = document.getElementById('weddingPopup');
 const weddingPopupContent = document.getElementById('weddingPopupContent');
-const tickets = document.getElementsByClassName('ticket');
 const weddingPopupForm = document.getElementById('weddingPopupForm');
-
-// Aç
-weddingPopupOpenButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    weddingPopup.classList.add('active');
-    weddingPopupContent.classList.remove('closing');
-    weddingPopupContent.style.animation = 'popupFadeIn 0.3s ease forwards';
-    Array.from(tickets).forEach((ticket) => {ticket.classList.add('blurred');});
-});
-
-// Kapat
-function weddingPopupClose() {
-    weddingPopupContent.classList.add('closing');
-    weddingPopupContent.style.animation = 'popupFadeOut 0.3s ease forwards';
-    setTimeout(() => {
-        weddingPopup.classList.remove('active');
-        Array.from(tickets).forEach((ticket) => {ticket.classList.remove('blurred');});
-        weddingPopupContent.classList.remove('closing');
-    }, 300); // animasyon süresiyle aynı olmalı
-}
-
-weddingPopupCloseButton.addEventListener('click', weddingPopupClose);
-
-weddingPopup.addEventListener('click', function(e) {
-    if (e.target === weddingPopup) {
-        weddingPopupClose();
-    }
-});
-
-weddingPopupForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const guests = document.getElementById('guests').value;
-
-    alert(`Teşekkürler, ${name}. ${guests} kişi olarak katılımınız alındı.`);
-    weddingPopupClose();
-    weddingPopupForm.reset();
-});
-
-
+const weddingPopupFormSaveButton = document.getElementById('weddingPopupFormSaveButton');
 const ceremonyPopupOpenButton = document.getElementById('ceremonyPopupOpenButton');
 const ceremonyPopupCloseButton = document.getElementById('ceremonyPopupCloseButton');
 const ceremonyPopup = document.getElementById('ceremonyPopup');
 const ceremonyPopupContent = document.getElementById('ceremonyPopupContent');
 const ceremonyPopupForm = document.getElementById('ceremonyPopupForm');
+const ceremonyPopupFormSaveButton = document.getElementById('ceremonyPopupFormSaveButton');
 
-// Aç
+weddingPopupOpenButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    openPopup(weddingPopup, weddingPopupContent);
+});
 ceremonyPopupOpenButton.addEventListener('click', function(e) {
     e.preventDefault();
-    ceremonyPopup.classList.add('active');
-    ceremonyPopupContent.classList.remove('closing');
-    ceremonyPopupContent.style.animation = 'popupFadeIn 0.3s ease forwards';
-    Array.from(tickets).forEach((ticket) => {ticket.classList.add('blurred');});
+    openPopup(ceremonyPopup, ceremonyPopupContent);
 });
 
-// Kapat
-function ceremonyPopupClose() {
-    ceremonyPopupContent.classList.add('closing');
-    ceremonyPopupContent.style.animation = 'popupFadeOut 0.3s ease forwards';
-    setTimeout(() => {
-        ceremonyPopup.classList.remove('active');
-        tickets.classList.remove('blurred');
-        Array.from(tickets).forEach((ticket) => {ticket.classList.remove('blurred');});
-    }, 300); // animasyon süresiyle aynı olmalı
-}
+weddingPopupCloseButton.addEventListener('click', () => {closePopup(weddingPopup, weddingPopupContent);});
+ceremonyPopupCloseButton.addEventListener('click', () => {closePopup(ceremonyPopup, ceremonyPopupContent);});
 
-ceremonyPopupCloseButton.addEventListener('click', ceremonyPopupClose);
-
+weddingPopup.addEventListener('click', function(e) {
+    if (e.target === weddingPopup) {
+        closePopup(weddingPopup, weddingPopupContent);
+    }
+});
 ceremonyPopup.addEventListener('click', function(e) {
     if (e.target === ceremonyPopup) {
-        ceremonyPopupClose();
+        closePopup(ceremonyPopup, ceremonyPopupContent);
     }
+});
+
+weddingPopupForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let guestName = document.getElementById('weddingPopupNameInput').value;
+    let guestCount = document.getElementById('weddingPopupCountInput').value;
+    let guestId = document.getElementById('weddingGuestId').value;
+    let action = e.submitter.value;
+
+    let formData = new FormData();
+    formData.append('type', "wedding");
+    formData.append('action', action);
+    formData.append('guestName', guestName);
+    formData.append('guestCount', guestCount);
+
+    if ((action === "updateGuest" || action === "deleteGuest") && guestId && guestId !== 0) {
+        formData.append('guestId', guestId);
+    }
+
+    fetch('/guest_tracker', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Server response:', data);
+            if (action === 'addGuest') {
+                weddingPopupOpenButton.innerText = "Güncelle";
+                weddingPopupFormSaveButton.value = "updateGuest";
+                alert("Kaydınız başarıyla alınmıştır.");
+            } else if (action === 'deleteGuest') {
+                weddingPopupOpenButton.innerText = "Ekle";
+                weddingPopupFormSaveButton.value = "addGuest";
+                alert("Kaydınız başarıyla silinmiştir.");
+            } else if (action === 'updateGuest') {
+                alert("Kaydınız başarıyla güncellenmiştir.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Kaydedilirken sorun oluştu. Lütfen daha sonra tekrar deneyin.");
+        });
+
+    closePopup(weddingPopup, weddingPopupContent);
 });
 
 ceremonyPopupForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const guests = document.getElementById('guests').value;
+    let guestName = document.getElementById('ceremonyPopupNameInput').value;
+    let guestCount = document.getElementById('ceremonyPopupCountInput').value;
+    let guestId = document.getElementById('ceremonyGuestId').value;
+    let action = e.submitter.value;
 
-    alert(`Teşekkürler, ${name}. ${guests} kişi olarak katılımınız alındı.`);
-    ceremonyPopupClose();
-    ceremonyPopupForm.reset();
+    let formData = new FormData();
+    formData.append('type', "ceremony");
+    formData.append('action', action);
+    formData.append('guestName', guestName);
+    formData.append('guestCount', guestCount);
+
+    if ((action === "updateGuest" || action === "deleteGuest") && guestId && guestId !== 0) {
+        formData.append('guestId', guestId);
+    }
+
+    fetch('/guest_tracker', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Server response:', data);
+            if (action === 'addGuest') {
+                ceremonyPopupOpenButton.innerText = "Güncelle";
+                ceremonyPopupFormSaveButton.value = "updateGuest";
+                alert("Kaydınız başarıyla alınmıştır.");
+            } else if (action === 'deleteGuest') {
+                ceremonyPopupOpenButton.innerText = "Ekle";
+                ceremonyPopupFormSaveButton.value = "addGuest";
+                alert("Kaydınız başarıyla silinmiştir.");
+            } else if (action === 'updateGuest') {
+                alert("Kaydınız başarıyla güncellenmiştir.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Kaydedilirken sorun oluştu. Lütfen daha sonra tekrar deneyin.");
+        });
+
+    closePopup(ceremonyPopup, ceremonyPopupContent);
 });
+
+function closePopup(popup, popupContent) {
+    popupContent.classList.add('closing');
+    popupContent.style.animation = 'popupFadeOut 0.3s ease forwards';
+    setTimeout(() => {
+        popup.classList.remove('active');
+        Array.from(tickets).forEach((ticket) => {ticket.classList.remove('blurred');});}, 300);
+}
+
+function openPopup(popup, popupContent) {
+    popup.classList.add('active');
+    popupContent.classList.remove('closing');
+    popupContent.style.animation = 'popupFadeIn 0.3s ease forwards';
+    Array.from(tickets).forEach((ticket) => {ticket.classList.add('blurred');});
+}

@@ -1,0 +1,11 @@
+DirectoryIndex index.php index.html
+
+RewriteEngine On
+# If the request is not an actual file or directory...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^guest_tracker guest_tracker.php [L]
+
+# Redirect everything to index.php
+RewriteRule ^$ index.php [QSA,L]

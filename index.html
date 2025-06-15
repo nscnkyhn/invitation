@@ -19,12 +19,16 @@
 
         <form id="weddingPopupForm">
             <label for="weddingPopupNameInput">İsim Soyisim:</label>
-            <input type="text" id="weddingPopupNameInput" required placeholder="Adınızı girin">
+            <input type="text" id="weddingPopupNameInput" required placeholder="Adınızı girin" value="{{weddingGuestName}}" oninvalid="this.setCustomValidity('Lütfen isminizi giriniz')"
+                   oninput="this.setCustomValidity('')">
 
-            <label for="weddingPopupCountInput">Kaç kişi geliyorsunuz?</label>
-            <input type="number" id="weddingPopupCountInput" min="1" required placeholder="Örn: 2">
+            <label for="weddingPopupCountInput">Kaç kişi geliyorsunuz? (Siz hariç)</label>
+            <input type="number" id="weddingPopupCountInput" min="1" max="99" required placeholder="Örn: 2" value="{{weddingGuestCount}}" oninvalid="this.setCustomValidity('Geçerli bir sayı giriniz')"
+                   oninput="this.setCustomValidity('')">
 
-            <button type="submit" class="submit-btn">Kaydet</button>
+            <button type="submit" id="weddingPopupFormSaveButton" class="submit-btn save-button" name="weddingActionButton" value="{{weddingSaveButtonValue}}">Kaydet</button>
+            <button type="submit" class="submit-btn delete-button" name="weddingActionButton" value="deleteGuest">Sil</button>
+            <input type="hidden" id="weddingGuestId" name="weddingGuestId" value="{{weddingGuestId}}">
         </form>
     </div>
 </div>
@@ -62,12 +66,6 @@
                     </a>
                 </div>
             </div>
-            <!--
-                        <div class="info-section">
-                            <div class="info-label">Salon</div>
-                            <div class="info-value">'salon_adı'</div>
-                        </div>
-            -->
         </div>
 
         <div class="info-group info-location-group">
@@ -89,9 +87,9 @@
 
         <div class="info-group info-guest">
             <div class="info-section">
-                <div class="info-label">Katılım Durumunuz</div>
-                <div class="info-value">
-                    <a href="#" id="weddingPopupOpenButton">Ekle/Güncelle</a>
+                <div class="info-label text-center">Katılım Durumunuz</div>
+                <div class="info-value text-center">
+                    <a href="#" id="weddingPopupOpenButton">{{weddingPopupAction}}</a>
                 </div>
             </div>
         </div>
@@ -109,12 +107,16 @@
 
         <form id="ceremonyPopupForm">
             <label for="ceremonyPopupNameInput">İsim Soyisim:</label>
-            <input type="text" id="ceremonyPopupNameInput" required placeholder="Adınızı girin">
+            <input type="text" id="ceremonyPopupNameInput" required placeholder="Adınızı girin" value="{{ceremonyGuestName}}" oninvalid="this.setCustomValidity('Lütfen isminizi giriniz')"
+                   oninput="this.setCustomValidity('')">
 
-            <label for="ceremonyPopupCountInput">Kaç kişi geliyorsunuz?</label>
-            <input type="number" id="ceremonyPopupCountInput" min="1" required placeholder="Örn: 2">
+            <label for="ceremonyPopupCountInput">Kaç kişi geliyorsunuz? (Siz hariç)</label>
+            <input type="number" id="ceremonyPopupCountInput" min="1" required placeholder="Örn: 2" value="{{ceremonyGuestCount}}" oninvalid="this.setCustomValidity('Lütfen isminizi giriniz')"
+                   oninput="this.setCustomValidity('')">
 
-            <button type="submit" class="submit-btn">Kaydet</button>
+            <button type="submit" id="ceremonyPopupFormSaveButton" class="submit-btn save-button" name="ceremonyActionButton" value="{{ceremonySaveButtonValue}}">Kaydet</button>
+            <button type="submit" class="submit-btn delete-button" name="ceremonyActionButton" value="delete">Sil</button>
+            <input type="hidden" id="ceremonyGuestId" name="ceremonyGuestId" value="{{ceremonyGuestId}}">
         </form>
     </div>
 </div>
@@ -173,9 +175,9 @@
 
         <div class="info-group info-guest">
             <div class="info-section">
-                <div class="info-label">Katılım Durumunuz</div>
-                <div class="info-value">
-                    <a href="#" id="ceremonyPopupOpenButton">Ekle/Güncelle</a>
+                <div class="info-label text-center">Katılım Durumunuz</div>
+                <div class="info-value text-center">
+                    <a href="#" id="ceremonyPopupOpenButton">{{ceremonyPopupAction}}</a>
                 </div>
             </div>
         </div>
