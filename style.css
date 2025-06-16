@@ -14,7 +14,7 @@
     --info-label-color: var(--common-color);
     --info-value-color: var(--common-color);
     --couple-names-color: var(--common-color);
-    --families-text-color: var(--common-color);
+    --info-families-text-color: var(--common-color);
     --common-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -100,7 +100,6 @@ body {
 
 .info-date-group {
     grid-template-columns: 4fr 2fr;
-
 }
 
 .info-location-group {
@@ -169,7 +168,7 @@ body {
 .groom-surname {
     z-index: 1;
     position: relative;
-    top: 50%;
+    top: 45%;
     left: 25%;
     font-size: 32px;
 }
@@ -185,15 +184,37 @@ body {
     position: relative;
 }
 
-.families {
-    text-align: center;
-    font-size: 14px;
-    color: var(--families-text-color);
-    font-style: italic;
-    position: relative;
-    top: 30%;
-
+.info-families {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
 }
+
+.family-names {
+    font-family: "Dancing Script", cursive;
+    font-size: 24px;
+    color: var(--info-families-text-color);
+}
+
+.brides-family {
+    text-align: right;
+}
+
+.grooms-family {
+    text-align: left;
+}
+
+.divider {
+    width: 1px;
+    background: #888888;
+    background: linear-gradient(0deg, rgba(136, 136, 136, 0), rgba(136, 136, 136, 0.5) 10%, rgba(0, 0, 0, 1) 50%, rgba(136, 136, 136, 0.5) 90%, rgba(136, 136, 136, 0));
+    height: 100%;
+    position: relative;
+    top: -5%;
+}
+
 
 .ticket-footer {
     background: var(--ticket-footer-background);
