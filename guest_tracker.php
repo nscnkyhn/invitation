@@ -22,7 +22,7 @@ if (empty($guestCount)) {
 $type = $_POST["type"];
 $table = "";
 if (empty($type)) {
-    echo "";
+    echo "ko";
     return;
 } else if ($type == "wedding") {
     $table = "wedding_guests";
@@ -32,7 +32,7 @@ if (empty($type)) {
 
 $action = $_POST["action"];
 if (empty($action)) {
-    echo "";
+    echo "ko";
     return;
 }
 
@@ -41,7 +41,7 @@ $clientIp = $_SERVER["REMOTE_ADDR"];
 
 if ($action == "addGuest") {
     $db->execute("INSERT INTO $table (client_ip, guest_name, guest_count, additional_guest_names, session_id) VALUES (:clientIp, :guestName, :guestCount, :additionalGuestNames, :sessionId);", [$clientIp, $guestName, $guestCount, $additionalGuestNames, $sessionId]);
-    echo "addGuest ok";
+    echo "ok";
     return;
 }
 
@@ -61,13 +61,13 @@ if ($action == "updateGuest") {
 
     var_dump($guestCount);
     $db->execute("UPDATE $table SET client_ip = :clientIp, guest_name = :guest_name, guest_count = :guest_count, additional_guest_names = :additional_guest_names WHERE id = :id;", [$clientIp, $guestName, $guestCount, $additionalGuestNames, $guestId]);
-    echo "updateGuest ok";
+    echo "ok";
     return;
 }
 
 if ($action == "deleteGuest") {
     $guestId = $_POST['guestId'];
     $db->execute("UPDATE $table SET is_deleted = true WHERE id = :id", [$guestId]);
-    echo "deleteGuest ok";
+    echo "ok";
     return;
 }

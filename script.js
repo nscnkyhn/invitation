@@ -12,30 +12,34 @@ const ceremonyPopupContent = document.getElementById('ceremonyPopupContent');
 const ceremonyPopupForm = document.getElementById('ceremonyPopupForm');
 const ceremonyPopupFormSaveButton = document.getElementById('ceremonyPopupFormSaveButton');
 
-weddingPopupOpenButton.addEventListener('click', function(e) {
+weddingPopupOpenButton.addEventListener('click', function (e) {
     e.preventDefault();
     openPopup(weddingPopup, weddingPopupContent);
 });
-ceremonyPopupOpenButton.addEventListener('click', function(e) {
+ceremonyPopupOpenButton.addEventListener('click', function (e) {
     e.preventDefault();
     openPopup(ceremonyPopup, ceremonyPopupContent);
 });
 
-weddingPopupCloseButton.addEventListener('click', () => {closePopup(weddingPopup, weddingPopupContent);});
-ceremonyPopupCloseButton.addEventListener('click', () => {closePopup(ceremonyPopup, ceremonyPopupContent);});
+weddingPopupCloseButton.addEventListener('click', () => {
+    closePopup(weddingPopup, weddingPopupContent);
+});
+ceremonyPopupCloseButton.addEventListener('click', () => {
+    closePopup(ceremonyPopup, ceremonyPopupContent);
+});
 
-weddingPopup.addEventListener('click', function(e) {
+weddingPopup.addEventListener('click', function (e) {
     if (e.target === weddingPopup) {
         closePopup(weddingPopup, weddingPopupContent);
     }
 });
-ceremonyPopup.addEventListener('click', function(e) {
+ceremonyPopup.addEventListener('click', function (e) {
     if (e.target === ceremonyPopup) {
         closePopup(ceremonyPopup, ceremonyPopupContent);
     }
 });
 
-weddingPopupForm.addEventListener('submit', function(e) {
+weddingPopupForm.addEventListener('submit', function (e) {
     e.preventDefault();
     let guestName = document.getElementById('weddingPopupNameInput').value;
     let guestCount = document.getElementById('weddingPopupCountInput').value;
@@ -79,7 +83,7 @@ weddingPopupForm.addEventListener('submit', function(e) {
     closePopup(weddingPopup, weddingPopupContent);
 });
 
-ceremonyPopupForm.addEventListener('submit', function(e) {
+ceremonyPopupForm.addEventListener('submit', function (e) {
     e.preventDefault();
     let guestName = document.getElementById('ceremonyPopupNameInput').value;
     let guestCount = document.getElementById('ceremonyPopupCountInput').value;
@@ -103,16 +107,20 @@ ceremonyPopupForm.addEventListener('submit', function(e) {
         .then(response => response.text())
         .then(data => {
             console.log('Server response:', data);
-            if (action === 'addGuest') {
-                ceremonyPopupOpenButton.innerText = "Güncelle";
-                ceremonyPopupFormSaveButton.value = "updateGuest";
-                alert("Kaydınız başarıyla alınmıştır.");
-            } else if (action === 'deleteGuest') {
-                ceremonyPopupOpenButton.innerText = "Ekle";
-                ceremonyPopupFormSaveButton.value = "addGuest";
-                alert("Kaydınız başarıyla silinmiştir.");
-            } else if (action === 'updateGuest') {
-                alert("Kaydınız başarıyla güncellenmiştir.");
+            if (data === "ok") {
+                if (action === 'addGuest') {
+                    ceremonyPopupOpenButton.innerText = "Güncelle";
+                    ceremonyPopupFormSaveButton.value = "updateGuest";
+                    alert("Kaydınız başarıyla alınmıştır.");
+                } else if (action === 'deleteGuest') {
+                    ceremonyPopupOpenButton.innerText = "Ekle";
+                    ceremonyPopupFormSaveButton.value = "addGuest";
+                    alert("Kaydınız başarıyla silinmiştir.");
+                } else if (action === 'updateGuest') {
+                    alert("Kaydınız başarıyla güncellenmiştir.");
+                }
+            } else {
+                alert("Kaydedilirken sorun oluştu. Lütfen daha sonra tekrar deneyin");
             }
         })
         .catch(error => {
@@ -128,12 +136,17 @@ function closePopup(popup, popupContent) {
     popupContent.style.animation = 'popupFadeOut 0.3s ease forwards';
     setTimeout(() => {
         popup.classList.remove('active');
-        Array.from(tickets).forEach((ticket) => {ticket.classList.remove('blurred');});}, 300);
+        Array.from(tickets).forEach((ticket) => {
+            ticket.classList.remove('blurred');
+        });
+    }, 300);
 }
 
 function openPopup(popup, popupContent) {
     popup.classList.add('active');
     popupContent.classList.remove('closing');
     popupContent.style.animation = 'popupFadeIn 0.3s ease forwards';
-    Array.from(tickets).forEach((ticket) => {ticket.classList.add('blurred');});
+    Array.from(tickets).forEach((ticket) => {
+        ticket.classList.add('blurred');
+    });
 }
