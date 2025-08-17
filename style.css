@@ -119,7 +119,7 @@ body {
     background-position: center;
     background-blend-mode: soft-light;
     display: grid;
-    grid-template-rows: 3fr 1fr 1fr;
+    grid-template-rows: 3fr 1fr 1fr 1f;
 }
 
 .info-group {
@@ -138,6 +138,10 @@ body {
 
 .info-location-group {
     grid-template-columns: 4fr 2fr;
+}
+
+#ceremony-attendance {
+    grid-template-columns: 3fr 3fr;
 }
 
 .info-section {
@@ -353,7 +357,7 @@ a {
     cursor: pointer;
 }
 
-.info-guest {
+.info-guest-attendance {
     justify-content: center;
     align-content: center;
 }

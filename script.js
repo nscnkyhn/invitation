@@ -150,3 +150,22 @@ function openPopup(popup, popupContent) {
         ticket.classList.add('blurred');
     });
 }
+
+// Turn all inputs with class "filepond" into FilePond
+const pond = FilePond.create(document.querySelector('.filepond'), {
+allowMultiple: true,
+acceptedFileTypes: ['image/*'],
+labelIdle: '📸 Fotoğraf eklemek için sürükleyip bırakın veya <span class="filepond--label-action">tıklayın</span>',
+server: {
+// Return a unique id (we’ll return a filepath token)
+process: {
+url: '/upload.php?action=process',
+method: 'POST',
+withCredentials: false,
+},
+// Body contains the token you returned in process
+revert: '/upload.php?action=revert',
+// Optional: let FilePond preview a previously uploaded file by url
+load: '/upload.php?action=load&file=',
+}
+});
