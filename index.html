@@ -33,102 +33,6 @@
     </div>
 </div>
 
-<div class="ticket" id="wedding-ticket">
-    <div class="ticket-header">
-        <div class="ticket-title">NİKAH DAVETİ</div>
-        <div class="ticket-sub-title">Bu özel günümüzde sizleri de aramızda görmekten mutluluk duyarız</div>
-    </div>
-
-    <div class="ticket-body">
-        <div class="couple-names">
-            <span class="bride-name">Nilay</span>
-            <span class="bride-surname">SOĞAT</span>
-            <span class="groom-name">Enes Can</span>
-            <span class="groom-surname">KAYHAN</span>
-        </div>
-
-        <div class="info-group info-families">
-            <div class="info-section brides-family">
-                <div class="info-sub-value">Anne - Baba</div>
-                <div class="info-value family-names">İncilay - Rıza</div>
-                <div class="info-label family-names">SOĞAT</div>
-            </div>
-            <div class="divider"></div>
-            <div class="info-section grooms-family">
-                <div class="info-sub-value">Anne</div>
-                <div class="info-value family-names">Nazlı CAN</div>
-            </div>
-        </div>
-
-        <div class="info-group info-date-group">
-            <div class="info-section">
-                <div class="info-label">Tarih ve Saat</div>
-                <div class="info-value">5 Temmuz 2025 12:30</div>
-            </div>
-            <div class="info-section">
-                <div class="info-label button-label">Takvime Ekle</div>
-                <div class="info-value calendar-icon">
-                    <a target="_blank"
-                       href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20250705T123000/20250705T133000&ctz=Europe/Istanbul&text=Enes+Can+ve+Nilay+Kayhan+Nikah%C4%B1&location=%C4%B0BB+B%C3%BClent+Ecevit+K%C3%BClt%C3%BCr+Merkezi&details=Nikah+salonunu+%27Nikah+Saray%C4%B1%27+tabelalar%C4%B1n%C4%B1+takip+ederek+bulabilirsiniz.">
-                        <img id="calendar-icon" class="info-label" src="media/calendar.svg" alt="Takvime Ekle">
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-group info-location-group">
-            <div class="info-section">
-                <div class="info-label">Mekan</div>
-                <div class="info-value">İBB Bülent Ecevit Kültür Merkezi Nikah Sarayı</div>
-                <div class="info-sub-value">Kordonboyu Mah. Ankara Cad. No: 142 Kartal/İstanbul</div>
-            </div>
-            <div class="info-section">
-                <div class="info-label button-label">Yol Tarifi Al</div>
-                <div class="info-value maps-icon">
-                    <a target="_blank"
-                       href="https://maps.google.com/maps?q=İBB Bülent Ecevit Kültür Merkezi">
-                        <img class="info-label maps-icon" src="media/location.svg" alt="Yol Tarifi Al">
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-group info-guest">
-            <div class="info-section">
-                <div class="info-label text-center">Katılım Durumunuz</div>
-                <div class="info-value text-center">
-                    <a href="#" id="weddingPopupOpenButton">{{weddingPopupAction}}</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="ticket-footer">
-        <div>Etkinlik saatinde salonda yerlerinizi almış olmanızı önemle rica ederiz.</div>
-    </div>
-</div>
-
-<div class="popup-overlay" id="ceremonyPopup">
-    <div class="popup-content" id="ceremonyPopupContent">
-        <button class="popup-close" id="ceremonyPopupCloseButton">&times;</button>
-        <h2 class="popup-title">Düğüne geliyor musunuz?</h2>
-
-        <form id="ceremonyPopupForm">
-            <label for="ceremonyPopupNameInput">İsim Soyisim:</label>
-            <input type="text" id="ceremonyPopupNameInput" required placeholder="Adınızı girin" value="{{ceremonyGuestName}}" oninvalid="this.setCustomValidity('Lütfen isminizi giriniz')"
-                   oninput="this.setCustomValidity('')">
-
-            <label for="ceremonyPopupCountInput">Kaç kişi geliyorsunuz? (Siz hariç)</label>
-            <input type="number" id="ceremonyPopupCountInput" min="1" required placeholder="Örn: 2" value="{{ceremonyGuestCount}}" oninvalid="this.setCustomValidity('Lütfen isminizi giriniz')"
-                   oninput="this.setCustomValidity('')">
-
-            <button type="submit" id="ceremonyPopupFormSaveButton" class="submit-btn save-button" name="ceremonyActionButton" value="{{ceremonySaveButtonValue}}">Kaydet</button>
-            <button type="submit" class="submit-btn delete-button" name="ceremonyActionButton" value="deleteGuest">Sil</button>
-            <input type="hidden" id="ceremonyGuestId" name="ceremonyGuestId" value="{{ceremonyGuestId}}">
-        </form>
-    </div>
-</div>
-
 <div class="ticket" id="ceremony-ticket">
     <div class="ticket-header">
         <div class="ticket-title">DÜĞÜN DAVETİ</div>
@@ -201,6 +105,102 @@
 
     <div class="ticket-footer">
         <div>Etkinlik saatinde mekanda yerlerinizi almış olmanızı önemle rica ederiz..</div>
+    </div>
+</div>
+
+<div class="ticket" id="wedding-ticket">
+    <div class="ticket-header">
+        <div class="ticket-title">NİKAH DAVETİ</div>
+        <div class="ticket-sub-title">Bu özel günümüzde sizleri de aramızda görmekten mutluluk duyarız</div>
+    </div>
+
+    <div class="ticket-body">
+        <div class="couple-names">
+            <span class="bride-name">Nilay</span>
+            <span class="bride-surname">SOĞAT</span>
+            <span class="groom-name">Enes Can</span>
+            <span class="groom-surname">KAYHAN</span>
+        </div>
+
+        <div class="info-group info-families">
+            <div class="info-section brides-family">
+                <div class="info-sub-value">Anne - Baba</div>
+                <div class="info-value family-names">İncilay - Rıza</div>
+                <div class="info-label family-names">SOĞAT</div>
+            </div>
+            <div class="divider"></div>
+            <div class="info-section grooms-family">
+                <div class="info-sub-value">Anne</div>
+                <div class="info-value family-names">Nazlı CAN</div>
+            </div>
+        </div>
+
+        <div class="info-group info-date-group">
+            <div class="info-section">
+                <div class="info-label">Tarih ve Saat</div>
+                <div class="info-value">5 Temmuz 2025 12:30</div>
+            </div>
+            <div class="info-section">
+                <div class="info-label button-label">Takvime Ekle</div>
+                <div class="info-value calendar-icon">
+                    <span target="_blank"
+                          href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20250705T123000/20250705T133000&ctz=Europe/Istanbul&text=Enes+Can+ve+Nilay+Kayhan+Nikah%C4%B1&location=%C4%B0BB+B%C3%BClent+Ecevit+K%C3%BClt%C3%BCr+Merkezi&details=Nikah+salonunu+%27Nikah+Saray%C4%B1%27+tabelalar%C4%B1n%C4%B1+takip+ederek+bulabilirsiniz.">
+                        <img id="calendar-icon" class="info-label" src="media/calendar.svg" alt="Takvime Ekle">
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-group info-location-group">
+            <div class="info-section">
+                <div class="info-label">Mekan</div>
+                <div class="info-value">İBB Bülent Ecevit Kültür Merkezi Nikah Sarayı</div>
+                <div class="info-sub-value">Kordonboyu Mah. Ankara Cad. No: 142 Kartal/İstanbul</div>
+            </div>
+            <div class="info-section">
+                <div class="info-label button-label">Yol Tarifi Al</div>
+                <div class="info-value maps-icon">
+                    <span target="_blank"
+                          href="https://maps.google.com/maps?q=İBB Bülent Ecevit Kültür Merkezi">
+                        <img class="info-label maps-icon" src="media/location.svg" alt="Yol Tarifi Al">
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-group info-guest">
+            <div class="info-section">
+                <div class="info-label text-center">Katılım Durumunuz</div>
+                <div class="info-value text-center">
+                    <a href="#" id="weddingPopupOpenButton">{{weddingPopupAction}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticket-footer">
+        <div>Etkinlik saatinde salonda yerlerinizi almış olmanızı önemle rica ederiz.</div>
+    </div>
+</div>
+
+<div class="popup-overlay" id="ceremonyPopup">
+    <div class="popup-content" id="ceremonyPopupContent">
+        <button class="popup-close" id="ceremonyPopupCloseButton">&times;</button>
+        <h2 class="popup-title">Düğüne geliyor musunuz?</h2>
+
+        <form id="ceremonyPopupForm">
+            <label for="ceremonyPopupNameInput">İsim Soyisim:</label>
+            <input type="text" id="ceremonyPopupNameInput" required placeholder="Adınızı girin" value="{{ceremonyGuestName}}" oninvalid="this.setCustomValidity('Lütfen isminizi giriniz')"
+                   oninput="this.setCustomValidity('')">
+
+            <label for="ceremonyPopupCountInput">Kaç kişi geliyorsunuz? (Siz hariç)</label>
+            <input type="number" id="ceremonyPopupCountInput" min="1" required placeholder="Örn: 2" value="{{ceremonyGuestCount}}" oninvalid="this.setCustomValidity('Lütfen isminizi giriniz')"
+                   oninput="this.setCustomValidity('')">
+
+            <button type="submit" id="ceremonyPopupFormSaveButton" class="submit-btn save-button" name="ceremonyActionButton" value="{{ceremonySaveButtonValue}}">Kaydet</button>
+            <button type="submit" class="submit-btn delete-button" name="ceremonyActionButton" value="deleteGuest">Sil</button>
+            <input type="hidden" id="ceremonyGuestId" name="ceremonyGuestId" value="{{ceremonyGuestId}}">
+        </form>
     </div>
 </div>
 </body>

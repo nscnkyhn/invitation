@@ -13,8 +13,8 @@ const ceremonyPopupForm = document.getElementById('ceremonyPopupForm');
 const ceremonyPopupFormSaveButton = document.getElementById('ceremonyPopupFormSaveButton');
 
 weddingPopupOpenButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    openPopup(weddingPopup, weddingPopupContent);
+    //e.preventDefault();
+    //openPopup(weddingPopup, weddingPopupContent);
 });
 ceremonyPopupOpenButton.addEventListener('click', function (e) {
     e.preventDefault();
